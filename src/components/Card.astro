@@ -7,9 +7,10 @@ interface Props {
 	href: string;
 	cta: string;
 	image?: string;
+	imageLoad?: "eager" | "lazy";
 }
 
-const { href, title, body, cta, image } = Astro.props;
+const { href, title, body, cta, image, imageLoad } = Astro.props;
 
 let imageDir;
 let imageObj;
@@ -27,6 +28,7 @@ if (image) {
 				src={imageObj["default"]}
 				alt={title}
 				class="max-h-12 w-auto mb-8"
+				loading={imageLoad ?? "lazy"}
 			/>
 		)
 	}

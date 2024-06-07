@@ -6,9 +6,10 @@ interface Props {
 	title: string;
 	body: string;
 	image: string;
+	imageLoad?: "eager" | "lazy";
 }
 
-const { name, title, body, image } = Astro.props;
+const { name, title, body, image, imageLoad } = Astro.props;
 
 const imageDir = import.meta.glob("../images/*");
 const imageObj = await imageDir[image]();
@@ -22,6 +23,7 @@ const imageObj = await imageDir[image]();
 			src={imageObj["default"]}
 			alt={name}
 			class="w-12 h-12 rounded-full"
+			loading={imageLoad ?? "lazy"}
 		/>
 		<div class="ml-4">
 			<p class="text-white font-bold">{name}</p>
