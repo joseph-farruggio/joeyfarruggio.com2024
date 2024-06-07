@@ -10,11 +10,26 @@ interface Props {
 }
 
 const { href, title, body, cta, image } = Astro.props;
+
+let imageDir;
+let imageObj;
+if (image) {
+	imageDir = import.meta.glob("../images/*");
+	imageObj = await imageDir[image]();
+}
 ---
 
 <div
 	class="bg-[#13122E] border border-[#33324F] rounded-xl p-6 max-w-2xl mt-12 relative group">
-	{image && <img src={image} alt={title} class="max-h-12 mb-8" />}
+	{
+		image && (
+			<Image
+				src={imageObj["default"]}
+				alt={title}
+				class="max-h-12 w-auto mb-8"
+			/>
+		)
+	}
 	<h2 class="text-white text-2xl">{title}</h2>
 	<p class="text-white/60 text-lg max-w-sm mt-4">
 		{body}

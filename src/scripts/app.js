@@ -14,6 +14,18 @@ Alpine.data('stars', () => ({
 	}
 }))
 
+Alpine.data('scrollFade', () => ({
+	// as you scroll begin decreasing the opacity of the element
+	opacity: 1,
+	init() {
+		window.addEventListener('scroll', () => {
+			const maxScroll = window.innerHeight; // Set maxScroll to the window height
+			const currentScroll = window.scrollY;
+			this.opacity = Math.max(1 - (currentScroll / maxScroll), 0); // Faster decrease rate
+		});
+	}
+}))
+
 
 window.Alpine = Alpine
 Alpine.start()

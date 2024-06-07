@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+
 import CampFire from "../components/CampFire.astro";
 import Card from "../components/Card.astro";
 import Rocks from "../components/Rocks.astro";
@@ -6,16 +9,12 @@ import SignPost from "../components/SignPost.astro";
 import Tent from "../components/Tent.astro";
 import TestimonialCard from "../components/TestimonialCard.astro";
 import TestimonialVideo from "../components/TestimonialVideo.astro";
-import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+import Cabin from "../components/Cabin.astro";
+import Smores from "../components/smores.astro";
+
 import tttLogo from "../images/ttt-logo.png";
 import swoogoLogo from "../images/swoogo-logo.png";
 import bpLogo from "../images/bp-logo.png";
-import acfLogo from "../images/acf.png";
-import slackLogo from "../images/slack.png";
-import codeIcon from "../images/code.svg";
-import Cabin from "../components/Cabin.astro";
-import Smores from "../components/smores.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -44,7 +43,7 @@ import Smores from "../components/smores.astro";
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 92 104"
-						class="pointer-events-none h-36 transition-transform delay-200 absolute -bottom-3 translate-y-36 group-hover:translate-y-0 -right-3 hidden md:block"
+						class="pointer-events-none h-36 transition-transform delay-200 absolute -bottom-3 translate-y-36 group-hover:translate-y-0 -right-3 hidden md:inline"
 						><path
 							fill="#BE4B44"
 							stroke="#C2594A"
@@ -93,7 +92,10 @@ import Smores from "../components/smores.astro";
 				</div>
 
 				<!-- Little Dipper -->
-				<div class="absolute top-32 right-16 md:right-32">
+				<div
+					x-data="scrollFade"
+					x-bind:style="{ opacity: opacity }"
+					class="fixed top-32 right-16 md:right-32 md:absolute">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="368"
@@ -129,7 +131,11 @@ import Smores from "../components/smores.astro";
 				</div>
 
 				<!-- Other Stars -->
-				<div class="absolute top-10 left-10" x-data="stars">
+				<div
+					x-data="scrollFade"
+					x-bind:style="{ opacity: opacity }"
+					class="fixed top-10 left-10 md:absolute"
+					x-data="stars">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="1465"
@@ -402,21 +408,21 @@ import Smores from "../components/smores.astro";
 						body="A free course covering ACF blocks. From getting started to advanced topics – this course is for you!"
 						cta="Get the course"
 						href="https://modernwpdev.co/"
-						image={acfLogo.src}
+						image="../images/acf.png"
 					/>
 					<Card
 						title="create-acf-block CLI"
 						body="A command line tool for rapidly stubbing out new blocks with Advanced Custom Fields."
 						cta="Get the CLI"
 						href="https://www.modernwpdev.co/acf-block-cli/"
-						image={codeIcon.src}
+						image="../images/code.svg"
 					/>
 					<Card
 						title="Slack Community"
 						body="Join a group of 140+ devs who are learning and sharing what they know about modern WordPress development and ACF."
 						cta="Join for free"
 						href="https://www.modernwpdev.co/slack/"
-						image={slackLogo.src}
+						image="../images/slack.png"
 					/>
 				</div>
 			</div>
