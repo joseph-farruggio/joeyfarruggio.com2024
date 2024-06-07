@@ -15,6 +15,7 @@ import acfLogo from "../images/acf.png";
 import slackLogo from "../images/slack.png";
 import codeIcon from "../images/code.svg";
 import Cabin from "../components/Cabin.astro";
+import Smores from "../components/smores.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -31,12 +32,41 @@ import Cabin from "../components/Cabin.astro";
 					Otherwise, you can find me in the woods.
 				</p>
 
-				<Card
-					title="Book a 15-min intro call"
-					body="Join me by the fire and let's discuss your project. I'll bring the smore's."
-					cta="View calendar"
-					href="https://calendly.com/ryanfiller/15min"
-				/>
+				<div class="group relative inline-block min-w-[600px]">
+					<Card
+						title="Book a 15-min intro call"
+						body="Join me by the fire and let's discuss your project. I'll bring the smore's."
+						cta="View calendar"
+						href="https://calendly.com/ryanfiller/15min"
+					/>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 92 104"
+						class="pointer-events-none h-36 transition-transform delay-200 absolute -bottom-3 translate-y-36 group-hover:translate-y-0 -right-3"
+						><path
+							fill="#BE4B44"
+							stroke="#C2594A"
+							d="M85.671 7.555C60.183 44.845 27.5 93.5 26 95.5l4.69.746L58.703 56.15l4.05-1.279 2.771-5.328-4.05 1.279 26.263-38.13-2.067-5.136Z"
+						></path><path
+							fill="#D9D9D9"
+							stroke="#C5C5C5"
+							d="m90.43 18.426-22.06-6.397-11.874 20.227 22.21 5.458L90.43 18.426Z"
+						></path><path
+							fill="#BE4B44"
+							stroke="#C2594A"
+							d="M29.982 9.46C38.211 53.875 44.685 93.449 46.5 95.5h-5l-6.508-30.69-3.187-2.807-.38-5.994 3.187 2.807-8.598-45.493 3.968-3.862Z"
+						></path><path
+							fill="#D9D9D9"
+							stroke="#C5C5C5"
+							d="m18.374 16.214 22.762 3.072 2.68 23.3-22.52-3.99-2.922-22.382Z"
+						></path></svg
+					>
+
+					<div
+						class="h-52 w-64 bg-[#0A0A23] absolute -bottom-52 -right-4 pointer-events-none">
+					</div>
+				</div>
 
 				<p class="text-white mt-6">
 					Or have a look at what the kind of work I do
