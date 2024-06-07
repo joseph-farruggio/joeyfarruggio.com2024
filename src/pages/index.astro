@@ -1,0 +1,404 @@
+---
+import CampFire from "../components/CampFire.astro";
+import Card from "../components/Card.astro";
+import Rocks from "../components/Rocks.astro";
+import SignPost from "../components/SignPost.astro";
+import Tent from "../components/Tent.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
+import TestimonialVideo from "../components/TestimonialVideo.astro";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import tttLogo from "../images/ttt-logo.png";
+import swoogoLogo from "../images/swoogo-logo.png";
+import bpLogo from "../images/bp-logo.png";
+import mhbAvatar from "../images/mhb.jpg";
+import ianAvatar from "../images/ian.jpg";
+import jonAvatar from "../images/jon.jpg";
+import nickAvatar from "../images/nick.jpg";
+import acfLogo from "../images/acf.png";
+import slackLogo from "../images/slack.png";
+import codeIcon from "../images/code.svg";
+import Cabin from "../components/Cabin.astro";
+---
+
+<Layout title="Welcome to Astro.">
+	<main class="">
+		<section class="relative h-screen overflow-hidden">
+			<div class="relative z-20 max-w-screen-2xl mx-auto pt-60 px-4">
+				<h1
+					class="text-8xl font-bold bg-gradient-to-r inline-block text-transparent bg-clip-text from-[#2DD4BF] to-[#0EA5E9]">
+					Web Developer <br />& Consultant
+				</h1>
+				<p class="text-white text-2xl max-w-2xl mt-10">
+					You can hire me as a contract dev or have me bring
+					leadership to your in-house/overseas development team.
+					Otherwise, you can find me in the woods.
+				</p>
+
+				<Card
+					title="Book a 15-min intro call"
+					body="Join me by the fire and let's discuss your project. I'll bring the smore's."
+					cta="View calendar"
+					href="https://calendly.com/ryanfiller/15min"
+				/>
+
+				<p class="text-white mt-6">
+					Or have a look at what the kind of work I do
+					<svg
+						class="h-6 w-6 inline-block ml-2"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M9 15L15 21M15 21L21 15M15 21V9C15 7.4087 14.3679 5.88258 13.2426 4.75736C12.1174 3.63214 10.5913 3 9 3C7.4087 3 5.88258 3.63214 4.75736 4.75736C3.63214 5.88258 3 7.4087 3 9V12"
+							stroke="white"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"></path>
+					</svg>
+				</p>
+			</div>
+
+			<div>
+				<!-- Sky -->
+				<div
+					class="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-[#151441] to-[#0A0A23]">
+				</div>
+
+				<!-- Little Dipper -->
+				<div class="absolute top-32 right-32">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="368"
+						height="115"
+						fill="none"
+						viewBox="0 0 368 115"
+						><circle cx="352.5" cy="15.5" r="1.5" fill="#fff"
+						></circle><circle
+							cx="366.5"
+							cy="106.5"
+							r="1.5"
+							fill="#fff"></circle><circle
+							cx="262.5"
+							cy="113.5"
+							r="1.5"
+							fill="#fff"></circle><circle
+							cx="227.5"
+							cy="53.5"
+							r="1.5"
+							fill="#fff"></circle><circle
+							cx="148.5"
+							cy="31.5"
+							r="1.5"
+							fill="#fff"></circle><circle
+							cx="83.5"
+							cy="1.5"
+							r="1.5"
+							fill="#fff"></circle><circle
+							cx="1.5"
+							cy="34.5"
+							r="1.5"
+							fill="#fff"></circle></svg
+					>
+				</div>
+
+				<!-- Other Stars -->
+				<div class="absolute top-10 left-10" x-data="stars">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="1465"
+						height="377"
+						fill="none"
+						viewBox="0 0 1465 377"
+						x-ref="starsContainer">
+						<circle
+							cx="1.5"
+							cy="1.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="60.5"
+							cy="133.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="486.5"
+							cy="130.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="279.5"
+							cy="239.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="714.5"
+							cy="282.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="893.5"
+							cy="330.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="791.5"
+							cy="375.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="1227.5"
+							cy="354.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="1106.5"
+							cy="290.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+						<circle
+							cx="1463.5"
+							cy="1.5"
+							r="1.5"
+							fill="#D9D9D9"
+							class="transition-opacity duration-1000"></circle>
+					</svg>
+				</div>
+
+				<!-- Camp site -->
+				<div class="absolute bottom-0 right-0">
+					<CampFire />
+				</div>
+			</div>
+		</section>
+
+		<section class="relative z-10">
+			<div class="relative z-20 max-w-screen-xl mx-auto px-4 pt-32">
+				<div class="lg:grid lg:grid-cols-12">
+					<p class="col-start-4 col-span-6 text-white text-3xl">
+						The <span class="font-cursive text-amber-500">wild</span
+						> world wide web can be a scary place. Let me show you my
+						favorite trails.
+					</p>
+				</div>
+
+				<div class="relative z-10 lg:grid lg:grid-cols-3 lg:gap-6">
+					<Card
+						title="Book a 15-min intro call"
+						body="Join me by the fire and let's discuss your project. I'll bring the smore's."
+						cta="View calendar"
+						href="https://calendly.com/ryanfiller/15min"
+					/>
+					<Card
+						title="Book a 15-min intro call"
+						body="Join me by the fire and let's discuss your project. I'll bring the smore's."
+						cta="View calendar"
+						href="https://calendly.com/ryanfiller/15min"
+					/>
+					<Card
+						title="Book a 15-min intro call"
+						body="Join me by the fire and let's discuss your project. I'll bring the smore's."
+						cta="View calendar"
+						href="https://calendly.com/ryanfiller/15min"
+					/>
+				</div>
+			</div>
+			<div class="absolute w-full -bottom-12 left-0 z-0">
+				<Tent />
+			</div>
+		</section>
+
+		<section class="relative">
+			<div class="relative z-10 max-w-screen-xl mx-auto px-4 pt-32">
+				<h2
+					class="relative z-10 text-6xl font-bold bg-gradient-to-r inline-block text-transparent bg-clip-text from-[#2DD4BF] to-[#0EA5E9]">
+					Happy Campers <br />Saying Nice Things
+				</h2>
+				<p class="text-white/80 text-xl max-w-xl mt-4">
+					My favorite client’s tell me they enjoy just having me on
+					their team. I make friends and mesh with others pretty
+					easily. It helps that I’m good at what I do, too.
+				</p>
+
+				<div
+					class="mt-20 px-6 md:grid md:grid-cols-2 md:gap-10 md:items-center">
+					<div class="relative">
+						<TestimonialVideo />
+						<div
+							class="absolute -bottom-6 -left-10 pointer-events-none">
+							<Rocks />
+						</div>
+					</div>
+
+					<div>
+						<p class="text-3xl text-white">
+							Joey is one of the best devs I've ever worked with.
+							I honestly couldn't recommend anyone else. And
+							genuinely a really nice guy.
+						</p>
+
+						<p class="text-lg text-white mt-10">
+							Matthew Howells-Barby
+						</p>
+						<p class="text-lg text-white/60">
+							Co-founder of Traffic Think Tank, Prev HubSpot VP
+						</p>
+
+						<a
+							href="https://mhb.xyz"
+							class="flex items-center gap-4 text-white/60 mt-4 text-lg hover:text-white">
+							mhb.xyz
+							<svg
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<g opacity="0.6">
+									<path
+										d="M13.5 6H5.25C4.65326 6 4.08097 6.23705 3.65901 6.65901C3.23705 7.08097 3 7.65326 3 8.25V18.75C3 19.3467 3.23705 19.919 3.65901 20.341C4.08097 20.7629 4.65326 21 5.25 21H15.75C16.3467 21 16.919 20.7629 17.341 20.341C17.7629 19.919 18 19.3467 18 18.75V10.5M7.5 16.5L21 3M21 3H15.75M21 3V8.25"
+										stroke="white"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"></path>
+								</g>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<div class="mt-12 lg:grid lg:grid-cols-3 lg:gap-6">
+					<TestimonialCard
+						name="Jon Henshaw"
+						title="VP Audience @CNET, Prev Vimeo"
+						body="Joey is incredible at what he does. Dependable, competent, and fun to work with."
+						image="../../public/jon.jpg"
+					/>
+					<TestimonialCard
+						name="Nick LeRoy"
+						title="SeoJobs.com"
+						body="A dev who understand SEO + communicates well is rare. Joey is all of this and more!"
+						image="../../public/nick.jpg"
+					/>
+					<TestimonialCard
+						name="Ian Howells"
+						title="Co-Founder Traffic Think Tank"
+						body="My go to WP dev – working with Joey is always smooth. Really impressive front-end chops too."
+						image="../../public/ian.jpg"
+					/>
+				</div>
+
+				<div class="mt-16">
+					<p class="text-center text-white text-xl max-w-xl mx-auto">
+						Most of the clients I work with stick with me for many
+						years. I generally only work a few folks at a time.
+					</p>
+
+					<div
+						class="mt-4 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 rounded-2xl md:grid-cols-4">
+						<div
+							class="bg-white/5 p-6 flex items-center just sm:p-10 md:bg-transparent">
+							<svg
+								class="max-h-12 w-full object-contain"
+								viewBox="0 0 138 39"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M30.8498 18.3502C30.712 21.3545 28.6139 25.4676 24.5554 30.6895C20.3587 36.1433 16.8094 38.8702 13.9075 38.8702C12.1092 38.8702 10.5875 37.2093 9.34236 33.8876L6.85146 24.7533C5.92769 21.433 4.93672 19.7721 3.87855 19.7707C3.64761 19.7707 2.84003 20.2554 1.4558 21.2246L0.00341797 19.3535C1.52631 18.0152 3.02767 16.6763 4.50749 15.3366C6.53864 13.5812 8.06295 12.6573 9.08042 12.5651C11.4826 12.3342 12.961 13.9761 13.5156 17.4909C14.1152 21.2828 14.531 23.6407 14.7629 24.5646C15.4557 27.7103 16.2178 29.2827 17.0493 29.2818C17.6953 29.2818 18.6655 28.2614 19.9598 26.2207C21.2541 24.18 21.9467 22.6265 22.0375 21.5602C22.2221 19.7986 21.5295 18.9171 19.9598 18.9157C19.1718 18.9269 18.3944 19.0991 17.6754 19.4216C19.1922 14.4546 22.0896 12.04 26.3677 12.1776C29.5379 12.2722 31.032 14.3297 30.8498 18.3502Z"
+									fill="#00ADEF"></path>
+								<path
+									d="M49.9004 28.0819C48.5444 30.6052 46.7353 32.8575 44.5637 34.7263C41.4668 37.4028 38.3713 38.741 35.2773 38.741C34.6588 38.7793 34.0397 38.6741 33.4685 38.4339C32.8973 38.1936 32.3894 37.8247 31.9842 37.356C31.1903 36.3317 30.8075 35.048 30.9109 33.7563C31.1225 31.3573 31.5986 28.9891 32.3307 26.6947C33.2298 23.5101 33.6808 21.8022 33.6836 21.5709C33.6836 20.3722 33.2679 19.7724 32.4364 19.7714C32.1591 19.7714 31.3733 20.2561 30.079 21.2253L28.4846 19.3542C29.963 18.016 31.4414 16.677 32.9198 15.3373C34.9075 13.5823 36.3866 12.6585 37.3572 12.5658C37.9874 12.4502 38.6375 12.5156 39.2321 12.7542C39.8267 12.9928 40.3416 13.3949 40.717 13.9139C41.4676 15.1168 41.7514 16.5528 41.5148 17.9507C40.9134 20.7587 40.266 24.3245 39.5727 28.6481C39.5253 30.6283 40.2416 31.6177 41.7214 31.6163C42.3674 31.6163 43.5226 30.9327 45.187 29.5656C46.404 28.588 47.54 27.5135 48.5837 26.3527L49.9004 28.0819ZM43.8709 3.44568C43.8136 4.0842 43.6311 4.70519 43.3336 5.27316C43.0362 5.84113 42.6297 6.34494 42.1374 6.75582C41.5538 7.33335 40.8611 7.78915 40.0997 8.09673C39.3383 8.40431 38.5233 8.55753 37.7022 8.54748C35.0691 8.54748 33.7984 7.39892 33.8902 5.10182C33.9347 3.90738 34.6389 2.75811 36.0028 1.65402C37.2748 0.584641 38.8838 -0.00116411 40.5459 1.97392e-05C41.0099 -0.00673616 41.4694 0.0919431 41.8897 0.288612C42.31 0.48528 42.6802 0.774801 42.9722 1.13533C43.5651 1.75668 43.8881 2.58718 43.8709 3.44568Z"
+									fill="#00ADEF"></path>
+								<path
+									d="M94.4203 28.525C93.0644 31.0484 91.2553 33.3007 89.0835 35.1694C85.9871 37.8459 82.8919 39.1841 79.7978 39.1841C76.7923 39.1841 75.3366 37.5225 75.4308 34.1994C75.5272 32.3968 75.817 30.6098 76.2954 28.8691C76.7419 27.2858 77.0322 25.6626 77.1621 24.0228C77.2094 22.2692 76.6761 21.3919 75.5621 21.391C74.3572 21.391 72.9207 22.8229 71.2525 25.6867C69.6076 28.3215 68.6289 31.317 68.401 34.4144C68.2452 35.9633 68.4448 37.5273 68.9845 38.9876C65.7603 39.0822 63.5032 38.5512 62.2131 37.3946C61.0589 36.378 60.5289 34.6923 60.623 32.3375C60.6709 30.8377 60.8995 29.3492 61.3038 27.9041C61.6789 26.6172 61.9073 25.2921 61.9845 23.9539C62.0792 22.2453 61.4548 21.391 60.1112 21.391C58.9527 21.391 57.7031 22.7075 56.3624 25.3404C55.0412 27.898 54.2842 30.7092 54.1427 33.5842C54.0481 36.1713 54.2137 37.9724 54.6396 38.9876C51.4689 39.0822 49.2167 38.414 47.8831 36.983C46.7776 35.7867 46.272 33.9681 46.3662 31.5272C46.4703 29.8455 46.6837 28.1723 47.005 26.5183C47.3263 24.8643 47.5397 23.1912 47.6439 21.5095C47.7348 20.6816 47.5268 20.2672 47.0199 20.2663C46.7426 20.2663 45.9568 20.7334 44.6625 21.6677L43 19.7966C43.2309 19.6144 44.6864 18.2755 47.3664 15.7797C49.3067 13.9821 50.623 13.0597 51.3153 13.0124C51.8917 12.9604 52.4711 13.0728 52.9862 13.3365C53.5013 13.6002 53.9311 14.0045 54.2258 14.5025C54.9741 15.6175 55.3615 16.9356 55.3353 18.2781C55.337 18.7205 55.2908 19.1618 55.1976 19.5943C55.8679 18.558 56.6852 17.6244 57.6239 16.8228C59.6031 15.0392 62.1076 13.9452 64.7615 13.7049C67.0255 13.5209 68.6431 14.0521 69.6141 15.2986C70.4715 16.5842 70.8623 18.1246 70.7215 19.6632C71.0459 19.3879 71.3923 19.0863 71.7629 18.762C72.6814 17.6499 73.7276 16.6497 74.8799 15.7818C76.4262 14.5981 78.2768 13.8771 80.2166 13.7028C82.4343 13.5188 84.0284 14.0479 84.999 15.2901C85.829 16.3024 86.1989 17.7514 86.1085 19.6369C85.965 21.5364 85.6518 23.4193 85.1729 25.2631C84.7995 26.6589 84.5101 28.0759 84.3062 29.5063C84.2124 30.1866 84.3085 30.8795 84.5837 31.5087C84.8151 31.877 85.3646 32.0593 86.2469 32.0593C86.8929 32.0593 88.0478 31.3758 89.7118 30.0087C90.9288 29.031 92.0647 27.9565 93.1084 26.7958L94.4203 28.525Z"
+									fill="#00ADEF"></path>
+								<path
+									d="M119.17 28.0102C117.829 30.225 115.195 32.4384 111.269 34.6504C106.765 37.3535 101.623 38.8097 96.3693 38.8695C92.6264 38.8695 89.9462 37.623 88.3287 35.13C87.1462 33.3238 86.5644 31.1904 86.6662 29.0341C86.7107 25.2971 88.3741 21.7414 91.6565 18.3672C93.2806 16.6091 95.2533 15.2084 97.4488 14.2544C99.6443 13.3004 102.015 12.814 104.408 12.8262C108.937 12.8262 111.34 14.6692 111.616 18.3551C111.801 20.7033 110.507 23.122 107.736 25.6112C104.613 28.4063 100.728 30.2094 96.5766 30.791C97.0064 31.3685 97.5741 31.8291 98.2278 32.1308C98.8816 32.4325 99.6005 32.5657 100.319 32.5181C104.081 32.4204 107.784 31.5573 111.201 29.9814C113.572 29.0451 115.809 27.8002 117.855 26.2789L119.17 28.0102ZM103.437 20.7769C103.482 19.538 102.974 18.9178 101.914 18.9164C100.529 18.9164 99.1219 19.8701 97.6932 21.7774C96.4022 23.3281 95.6283 25.2433 95.4799 27.2553C95.4448 27.5532 95.4448 27.8542 95.4799 28.1521C97.7024 27.3506 99.7137 26.0547 101.362 24.3623C102.698 22.895 103.39 21.6998 103.437 20.7769Z"
+									fill="#00ADEF"></path>
+								<path
+									d="M137.984 23.3668C137.848 27.4939 136.166 31.4193 133.271 34.3651C131.864 35.8694 130.155 37.0598 128.256 37.8584C126.357 38.657 124.311 39.0458 122.251 38.9993C118.601 38.9993 115.829 37.8231 113.935 35.4706C112.498 33.5771 111.698 31.2776 111.648 28.9014C111.416 24.9354 112.848 21.293 115.946 17.9741C117.503 16.1892 119.434 14.7683 121.602 13.8119C123.769 12.8555 126.12 12.3869 128.489 12.4395C131.722 12.4395 134.17 13.5232 135.835 15.6907C137.406 17.6742 138.123 20.2329 137.984 23.3668ZM130.152 23.1057C130.211 21.9372 130.034 20.7687 129.631 19.67C129.239 18.6293 128.673 18.1089 127.934 18.1089C125.577 18.1089 123.637 19.3816 122.113 21.9271C120.844 23.9254 120.126 26.224 120.033 28.5892C119.966 29.6448 120.181 30.6993 120.657 31.6439C120.822 32.0839 121.114 32.4645 121.497 32.7365C121.88 33.0086 122.336 33.1596 122.806 33.1702C124.884 33.1702 126.663 31.9441 128.143 29.4918C129.353 27.5724 130.045 25.3722 130.152 23.1057Z"
+									fill="#00ADEF"></path>
+							</svg>
+						</div>
+						<div
+							class="bg-white/5 p-6 flex items-center just sm:p-10 md:bg-transparent">
+							<Image
+								src={bpLogo}
+								alt="BiggerPockets"
+								class="max-h-12 w-full object-contain"
+							/>
+						</div>
+						<div
+							class="bg-white/5 p-6 flex items-center just sm:p-10 md:bg-transparent">
+							<Image
+								src={swoogoLogo}
+								alt="Swoogo"
+								class="max-h-12 w-full object-contain"
+							/>
+						</div>
+						<div
+							class="bg-white/5 p-6 flex items-center just sm:p-10 md:bg-transparent">
+							<Image
+								src={tttLogo}
+								alt="Traffic Think Tank"
+								class="max-h-12 w-full object-contain"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="absolute top-12 right-0 z-0">
+				<SignPost />
+			</div>
+		</section>
+
+		<section class="relative">
+			<div class="relative z-20 max-w-screen-xl mx-auto px-4 pt-32">
+				<h2 class="text-center font-bold text-6xl text-white">
+					modern<span class="text-cyan-300">WP</span>dev.co
+				</h2>
+				<p
+					class="text-white/80 text-xl text-center max-w-xl mx-auto mt-4">
+					I lead a Slack community and teach other developers about
+					leveling up WordPress with modern development.
+				</p>
+				<div class="relative z-10 lg:grid lg:grid-cols-3 lg:gap-6">
+					<Card
+						title="ACF Mini Course"
+						body="A free course covering ACF blocks. From getting started to advanced topics – this course is for you!"
+						cta="Get the course"
+						href="https://modernwpdev.co/"
+						image={acfLogo.src}
+					/>
+					<Card
+						title="create-acf-block CLI"
+						body="A command line tool for rapidly stubbing out new blocks with Advanced Custom Fields."
+						cta="Get the CLI"
+						href="https://www.modernwpdev.co/acf-block-cli/"
+						image={codeIcon.src}
+					/>
+					<Card
+						title="Slack Community"
+						body="Join a group of 140+ devs who are learning and sharing what they know about modern WordPress development and ACF."
+						cta="Join for free"
+						href="https://www.modernwpdev.co/slack/"
+						image={slackLogo.src}
+					/>
+				</div>
+			</div>
+			<div class="absolute top-0 left-0">
+				<Cabin />
+			</div>
+		</section>
+	</main>
+</Layout>
