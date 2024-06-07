@@ -23,5 +23,5 @@ const { href, title, body, cta, image } = Astro.props;
 		class="text-white/60 text-lg max-w-sm mt-4 group-hover:text-white transition-colors">
 		{cta}
 	</p>
-	<a href={href} class="absolute inset-0"></a>
+	<a href={href} class="absolute inset-0 opacity-0">{cta}</a>
 </div>

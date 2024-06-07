@@ -20,30 +20,31 @@ import Smores from "../components/smores.astro";
 
 <Layout title="Welcome to Astro.">
 	<main class="">
-		<section class="relative h-screen overflow-hidden">
+		<section class="relative overflow-hidden">
 			<div class="relative z-20 max-w-screen-2xl mx-auto pt-60 px-4">
 				<h1
-					class="text-8xl font-bold bg-gradient-to-r inline-block text-transparent bg-clip-text from-[#2DD4BF] to-[#0EA5E9]">
+					class="text-6xl md:text-8xl text-pretty font-bold bg-gradient-to-r inline-block text-transparent bg-clip-text from-[#2DD4BF] to-[#0EA5E9]">
 					Web Developer <br />& Consultant
 				</h1>
 				<p class="text-white text-2xl max-w-2xl mt-10">
-					You can hire me as a contract dev or have me bring
-					leadership to your in-house/overseas development team.
-					Otherwise, you can find me in the woods.
+					You can hire me as a contract dev or have me bring leadership to your
+					in-house/overseas development team. Otherwise, you can find me in the
+					woods.
 				</p>
 
-				<div class="group relative inline-block min-w-[600px]">
+				<div class="group relative inline-block md:min-w-[600px]">
 					<Card
 						title="Book a 15-min intro call"
 						body="Join me by the fire and let's discuss your project. I'll bring the smore's."
 						cta="View calendar"
-						href="https://calendly.com/ryanfiller/15min"
+						href="https://calendly.com/joey-farruggio/one-on-one-chat-15m"
 					/>
+
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 92 104"
-						class="pointer-events-none h-36 transition-transform delay-200 absolute -bottom-3 translate-y-36 group-hover:translate-y-0 -right-3"
+						class="pointer-events-none h-36 transition-transform delay-200 absolute -bottom-3 translate-y-36 group-hover:translate-y-0 -right-3 hidden md:block"
 						><path
 							fill="#BE4B44"
 							stroke="#C2594A"
@@ -64,7 +65,7 @@ import Smores from "../components/smores.astro";
 					>
 
 					<div
-						class="h-52 w-64 bg-[#0A0A23] absolute -bottom-52 -right-4 pointer-events-none">
+						class="h-52 w-64 bg-[#0A0A23] absolute -bottom-52 -right-4 pointer-events-none hidden md:block">
 					</div>
 				</div>
 
@@ -92,15 +93,14 @@ import Smores from "../components/smores.astro";
 				</div>
 
 				<!-- Little Dipper -->
-				<div class="absolute top-32 right-32">
+				<div class="absolute top-32 right-16 md:right-32">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="368"
 						height="115"
 						fill="none"
 						viewBox="0 0 368 115"
-						><circle cx="352.5" cy="15.5" r="1.5" fill="#fff"
-						></circle><circle
+						><circle cx="352.5" cy="15.5" r="1.5" fill="#fff"></circle><circle
 							cx="366.5"
 							cy="106.5"
 							r="1.5"
@@ -201,7 +201,7 @@ import Smores from "../components/smores.astro";
 				</div>
 
 				<!-- Camp site -->
-				<div class="absolute bottom-0 right-0">
+				<div class="md:absolute md:bottom-0 md:right-0">
 					<CampFire />
 				</div>
 			</div>
@@ -211,9 +211,8 @@ import Smores from "../components/smores.astro";
 			<div class="relative z-20 max-w-screen-xl mx-auto px-4 pt-32">
 				<div class="lg:grid lg:grid-cols-12">
 					<p class="col-start-4 col-span-6 text-white text-3xl">
-						The <span class="font-cursive text-amber-500">wild</span
-						> world wide web can be a scary place. Let me show you my
-						favorite trails.
+						The <span class="font-cursive text-amber-500">wild</span> world wide
+						web can be a scary place. Let me show you my favorite trails.
 					</p>
 				</div>
 
@@ -250,31 +249,27 @@ import Smores from "../components/smores.astro";
 					Happy Campers <br />Saying Nice Things
 				</h2>
 				<p class="text-white/80 text-xl max-w-xl mt-4">
-					My favorite client’s tell me they enjoy just having me on
-					their team. I make friends and mesh with others pretty
-					easily. It helps that I’m good at what I do, too.
+					My favorite client’s tell me they enjoy just having me on their team.
+					I make friends and mesh with others pretty easily. It helps that I’m
+					good at what I do, too.
 				</p>
 
 				<div
 					class="mt-20 px-6 md:grid md:grid-cols-2 md:gap-10 md:items-center">
 					<div class="relative">
 						<TestimonialVideo />
-						<div
-							class="absolute -bottom-6 -left-10 pointer-events-none">
+						<div class="absolute -bottom-6 -left-10 pointer-events-none">
 							<Rocks />
 						</div>
 					</div>
 
 					<div>
 						<p class="text-3xl text-white">
-							Joey is one of the best devs I've ever worked with.
-							I honestly couldn't recommend anyone else. And
-							genuinely a really nice guy.
+							Joey is one of the best devs I've ever worked with. I honestly
+							couldn't recommend anyone else. And genuinely a really nice guy.
 						</p>
 
-						<p class="text-lg text-white mt-10">
-							Matthew Howells-Barby
-						</p>
+						<p class="text-lg text-white mt-10">Matthew Howells-Barby</p>
 						<p class="text-lg text-white/60">
 							Co-founder of Traffic Think Tank, Prev HubSpot VP
 						</p>
@@ -325,8 +320,8 @@ import Smores from "../components/smores.astro";
 
 				<div class="mt-16">
 					<p class="text-center text-white text-xl max-w-xl mx-auto">
-						Most of the clients I work with stick with me for many
-						years. I generally only work a few folks at a time.
+						Most of the clients I work with stick with me for many years. I
+						generally only work a few folks at a time.
 					</p>
 
 					<div
@@ -390,13 +385,12 @@ import Smores from "../components/smores.astro";
 
 		<section class="relative">
 			<div class="relative z-20 max-w-screen-xl mx-auto px-4 pt-32">
-				<h2 class="text-center font-bold text-6xl text-white">
+				<h2 class="text-center font-bold text-5xl md:text-6xl text-white">
 					modern<span class="text-cyan-300">WP</span>dev.co
 				</h2>
-				<p
-					class="text-white/80 text-xl text-center max-w-xl mx-auto mt-4">
-					I lead a Slack community and teach other developers about
-					leveling up WordPress with modern development.
+				<p class="text-white/80 text-xl text-center max-w-xl mx-auto mt-4">
+					I lead a Slack community and teach other developers about leveling up
+					WordPress with modern development.
 				</p>
 				<div class="relative z-10 lg:grid lg:grid-cols-3 lg:gap-6">
 					<Card
