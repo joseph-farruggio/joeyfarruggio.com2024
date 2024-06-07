@@ -209,7 +209,7 @@ import Smores from "../components/smores.astro";
 		</section>
 
 		<section class="relative z-10">
-			<div class="relative z-20 max-w-screen-xl mx-auto px-4 pt-32">
+			<div class="relative z-20 max-w-screen-xl mx-auto px-4 pt-16 md:pt-32">
 				<div class="lg:grid lg:grid-cols-12">
 					<p class="col-start-4 col-span-6 text-white text-3xl">
 						The <span class="font-cursive text-amber-500">wild</span> world wide
@@ -238,7 +238,9 @@ import Smores from "../components/smores.astro";
 					/>
 				</div>
 			</div>
-			<div class="absolute w-full -bottom-12 left-0 z-0">
+
+			<div
+				class="hidden md:block absolute w-full -bottom-12 left-0 z-0 overflow-hidden">
 				<Tent />
 			</div>
 		</section>
@@ -246,38 +248,39 @@ import Smores from "../components/smores.astro";
 		<section class="relative">
 			<div class="relative z-10 max-w-screen-xl mx-auto px-4 pt-32">
 				<h2
-					class="relative z-10 text-6xl font-bold bg-gradient-to-r inline-block text-transparent bg-clip-text from-[#2DD4BF] to-[#0EA5E9]">
+					class="relative z-10 text-5xl md:text-6xl font-bold bg-gradient-to-r inline-block text-transparent bg-clip-text from-[#2DD4BF] to-[#0EA5E9]">
 					Happy Campers <br />Saying Nice Things
 				</h2>
 				<p class="text-white/80 text-xl max-w-xl mt-4">
-					My favorite client’s tell me they enjoy just having me on their team.
-					I make friends and mesh with others pretty easily. It helps that I’m
+					My favorite client's tell me they enjoy just having me on their team.
+					I make friends and mesh with others pretty easily. It helps that I'm
 					good at what I do, too.
 				</p>
 
 				<div
-					class="mt-20 px-6 md:grid md:grid-cols-2 md:gap-10 md:items-center">
+					class="mt-20 md:px-6 md:grid md:grid-cols-2 md:gap-10 md:items-center">
 					<div class="relative">
 						<TestimonialVideo />
-						<div class="absolute -bottom-6 -left-10 pointer-events-none">
+						<div
+							class="hidden md:block absolute -bottom-6 -left-10 pointer-events-none">
 							<Rocks />
 						</div>
 					</div>
 
-					<div>
+					<div class="mt-8">
 						<p class="text-3xl text-white">
 							Joey is one of the best devs I've ever worked with. I honestly
 							couldn't recommend anyone else. And genuinely a really nice guy.
 						</p>
 
-						<p class="text-lg text-white mt-10">Matthew Howells-Barby</p>
-						<p class="text-lg text-white/60">
+						<p class="text-xl text-white mt-10">Matthew Howells-Barby</p>
+						<p class="text-xl text-white/60 text-pretty">
 							Co-founder of Traffic Think Tank, Prev HubSpot VP
 						</p>
 
 						<a
 							href="https://mhb.xyz"
-							class="flex items-center gap-4 text-white/60 mt-4 text-lg hover:text-white">
+							class="flex items-center gap-4 text-white/60 mt-4 text-xl hover:text-white">
 							mhb.xyz
 							<svg
 								width="24"
@@ -379,14 +382,14 @@ import Smores from "../components/smores.astro";
 				</div>
 			</div>
 
-			<div class="absolute top-12 right-0 z-0">
+			<div class="hidden md:block absolute top-12 right-0 z-0">
 				<SignPost />
 			</div>
 		</section>
 
 		<section class="relative">
 			<div class="relative z-20 max-w-screen-xl mx-auto px-4 pt-32">
-				<h2 class="text-center font-bold text-5xl md:text-6xl text-white">
+				<h2 class="text-center font-bold text-4xl md:text-6xl text-white">
 					modern<span class="text-cyan-300">WP</span>dev.co
 				</h2>
 				<p class="text-white/80 text-xl text-center max-w-xl mx-auto mt-4">
@@ -417,7 +420,7 @@ import Smores from "../components/smores.astro";
 					/>
 				</div>
 			</div>
-			<div class="absolute top-0 left-0">
+			<div class="hidden md:block absolute top-0 left-0 overflow-hidden">
 				<Cabin />
 			</div>
 		</section>
