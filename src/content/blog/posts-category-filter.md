@@ -6,18 +6,17 @@ category: wordpress
 featuredImage: "/images/posts-filter.png"
 ---
 
-
 ## What we're building
 
 We'll build a feature for our WordPress theme to filter posts by category. This will happen asynchronously - so the browser won't reload as new posts appear. We'll use Alpine.JS on the front-end for fetching data and displaying new posts.
 
-![Filter Posts by Category in WordPress](../../images/blog/posts-filter.png)
+![Filter Posts by Category in WordPress](../../../public/blog/posts-filter.png)
 
 ## Project structure
 
 How you structure this is up to you, but I want to clearly present the parts involved in this project:
 
-``` text
+```text
 /theme-root
 │
 └─── /template-parts/posts-filter
@@ -40,16 +39,16 @@ How you structure this is up to you, but I want to clearly present the parts inv
 `default-query.php` will hold our post query and args for the intitial page load. We don't need JavaScript for this.
 
 **/javascript/**  
-`posts-filter.js` will hold our Alpine.JS component. It's responsible for handling the category buttons and fetching and displaying posts.  
+`posts-filter.js` will hold our Alpine.JS component. It's responsible for handling the category buttons and fetching and displaying posts.
 
-This guide assumes you understand how to enqueue JavaScript in WordPress. Whether you want to include Alpine.js via CDN or NPM is up to you. Hit those [docs](https://alpinejs.dev/essentials/installation){target="_blank"}!
+This guide assumes you understand how to enqueue JavaScript in WordPress. Whether you want to include Alpine.js via CDN or NPM is up to you. Hit those [docs](https://alpinejs.dev/essentials/installation){target="\_blank"}!
 
 **/inc/**  
 `query-posts.php` will hold our post query and args for filtering and loading more posts. Our JavaScript will make requests to this file to receive back a list of blog posts.
 
 We need to require this file from `functions.php`:
 
-``` php
+```php
 /**
  * API for querying posts
  */
@@ -63,23 +62,24 @@ require get_template_directory() . '/inc/query-posts.php';
 Here's the skeleton of our base template. The wrapper div references an Alpine.js component called `filterPosts()`. We'll create that component later.
 
 ```html
-<div 
-    class="flex items-start gap-8 alignwide mt-32"
-    x-data="filterPosts('<?php echo admin_url('admin-ajax.php'); ?>')">
-    <!-- Category Filter Sidebar -->
-    <aside class="w-1/4"></aside>
+<div
+	class="flex items-start gap-8 alignwide mt-32"
+	x-data="filterPosts('<?php echo admin_url('admin-ajax.php'); ?>')">
+	<!-- Category Filter Sidebar -->
+	<aside class="w-1/4"></aside>
 
-    <!-- Posts Column -->
-    <div class="w-3/4"></div>
+	<!-- Posts Column -->
+	<div class="w-3/4"></div>
 </div>
 ```
 
 ### Default Query
+
 First, let's setup the default state for the posts column. The following code goes in `/template-parts/default-query.php`.
 
 This is a simple query that returns ten blog posts and returns each post as our `/template-parts/posts-filter/single-post.php` template.
 
-``` php
+```php
 $query_args = array(
     'posts_per_page' => 10,
     'post_status' => 'publish',
@@ -100,7 +100,7 @@ endif;
 
 This is the single post template.
 
-``` php
+```php
 <div>
     <?php if ( has_post_thumbnail() ) {
         the_post_thumbnail( 'full', array( 'class' => 'm-0' ) );
@@ -109,10 +109,9 @@ This is the single post template.
 </div>
 ```
 
-
 Inside of our posts column div lets call display the result of that query:
 
-``` php
+```php
 <!-- Posts Column -->
 <div class="w-3/4">
     <!-- Default posts query -->
@@ -123,11 +122,12 @@ Inside of our posts column div lets call display the result of that query:
 ```
 
 This is what we've built so far:
+
 1. A shell for our sidebar
 2. A content area for posts
 3. A default query that returns 10 posts w/o JavaScript
 
-![Default Query](../../images/blog/default-query.png)
+![Default Query](../../../public/blog/default-query.png)
 
 ---
 
@@ -135,26 +135,26 @@ This is what we've built so far:
 
 Our filter won't work right away, but lets get our categories display as a list of buttons.
 
-``` php
+```php
 <!-- Category Filter Sidebar -->
 <aside class="w-1/4">
     <p class="text-xl font-medium">Categories</p>
-    <?php 
+    <?php
         $categories = get_categories();
-        if ( ! empty( $categories ) ) : 
+        if ( ! empty( $categories ) ) :
     ?>
     <ul class="list-none px-0">
         <?php foreach ( $categories as $category ) :
-        
+
         // Skip "Uncategorized" category
-        if ($category->name == 'Uncategorized') continue; ?>    
+        if ($category->name == 'Uncategorized') continue; ?>
 
             <li class="hover:bg-slate-100 my-1 px-4 py-2 -ml-4 rounded-md">
                 <button class="text-xl text-slate-800 w-full text-left">
                     <?= esc_html( $category->name ); ?>
                 </button>
             </li>
-        
+
         <?php endforeach; ?>
     </ul>
     <?php endif; ?>
@@ -163,9 +163,9 @@ Our filter won't work right away, but lets get our categories display as a list 
 
 This gives us a list of categories in the sidebar:
 
-![Category filter](../../images/blog/category-list.png)
+![Category filter](../../../public/blog/category-list.png)
 
---- 
+---
 
 ## Filtering by category
 
@@ -177,25 +177,24 @@ Now we're getting into the complex stuff. Here's what we need to do:
 
 ### Alpine.js component
 
-If you're new to Alpine.js, hit the [docs](https://alpinejs.dev/essentials/installation){target="_blank"} to learn how to install Alpine via NPM or just grab a link from the CDN.
+If you're new to Alpine.js, hit the [docs](https://alpinejs.dev/essentials/installation){target="\_blank"} to learn how to install Alpine via NPM or just grab a link from the CDN.
 
 In my example I've installed Alpine via NPM. That's why you see `import` and `Alpine.start()`. Ignore those if you're using the CDN.
 
-``` js
-import Alpine from 'alpinejs'
-
+```js
+import Alpine from "alpinejs";
 
 Alpine.data("filterPosts", (adminURL) => ({
 	posts: "",
-    limit: 10,
+	limit: 10,
 	category: null,
-    showDefault: true,
-    showFiltered: false,
+	showDefault: true,
+	showFiltered: false,
 
 	filterPosts(id) {
-        this.showDefault = false;
-        this.showFiltered = true;
-        this.category = id;
+		this.showDefault = false;
+		this.showFiltered = true;
+		this.category = id;
 		this.fetchPosts();
 	},
 
@@ -203,7 +202,7 @@ Alpine.data("filterPosts", (adminURL) => ({
 		var formData = new FormData();
 		formData.append("action", "filterPosts");
 		formData.append("offset", this.offset);
-        formData.append("limit", this.limit);
+		formData.append("limit", this.limit);
 
 		if (this.category) {
 			formData.append("category", this.category);
@@ -213,20 +212,20 @@ Alpine.data("filterPosts", (adminURL) => ({
 			method: "POST",
 			body: formData,
 		})
-        .then((res) => res.json())
-        .then((res) => {
-            this.posts = res.posts;
-        });
-	}
+			.then((res) => res.json())
+			.then((res) => {
+				this.posts = res.posts;
+			});
+	},
 }));
- 
-window.Alpine = Alpine
-Alpine.start()
+
+window.Alpine = Alpine;
+Alpine.start();
 ```
 
 Let's walk through this component:
 
-``` js
+```js
 posts: "",
 category: null,
 showDefault: true,
@@ -241,7 +240,7 @@ showFiltered: false,
 
 `showFiltered`: If true, we'll show the filtered posts.
 
-``` js
+```js
 filterPosts(id) {
     this.showDefault = false;
     this.showFiltered = true;
@@ -252,7 +251,7 @@ filterPosts(id) {
 
 `filterPosts(id)` takes in a category ID. It sets the current `category` to that ID and calls the `fetchPosts()` method. It's also showing the filtered posts and hiding the default ones.
 
-``` js
+```js
 fetchPosts() {
     var formData = new FormData();
     formData.append("action", "filterPosts");
@@ -277,25 +276,27 @@ fetchPosts() {
 `fetchPosts()` is responsible for making an API call to WordPress. We give WordPress a category ID and we get back a list of blog posts. We can add data to our API call with `FormData()`.
 
 Here we prep our form data:
-``` js
+
+```js
 var formData = new FormData();
 ```
 
 Then we add to that data with a key/value pair:
-``` js
+
+```js
 formData.append("action", "filterPosts");
 ...
 ```
 
-`action` is the key and `filterPosts` is the value. 
+`action` is the key and `filterPosts` is the value.
 
 `filterPosts` is the name of a PHP function we'll create soon that handles the request made from our `fetchPosts()` method.
 
 If there's a category ID set, we can add `category` as the key in our form data and the ID as the value.
 
-``` js
+```js
 if (this.category) {
-    formData.append("category", this.category);
+	formData.append("category", this.category);
 }
 ```
 
@@ -304,12 +305,11 @@ When `fetchPosts()` is called is tells WordPress:
 1. Run the PHP function name `filterPosts`
 1. And pass into that function a `category` from our category ID
 
-
 ### Query Posts API
 
 Earlier you should have created `inc/query-posts.php` and required it in `functions.php`.
 
-``` php
+```php
 <?php
 // the ajax function
 add_action('wp_ajax_filterPosts', 'filterPosts');
@@ -351,13 +351,15 @@ function filterPosts()
 Let's break this down:
 
 These two actions allow us to call the `filterPosts()` PHP function asynchronously on the front-end.
-``` php
+
+```php
 add_action('wp_ajax_filterPosts', 'filterPosts');
 add_action('wp_ajax_nopriv_filterPosts', 'filterPosts');
 ```
 
 Now we prep that response that holds our `posts`. It's in an array so that we can add more data to our response if we expand our code and add new features.
-``` php
+
+```php
 $response = [
     'posts' => "",
 ];
@@ -365,7 +367,7 @@ $response = [
 
 `$filter_args()` is an array that holds two default parameters - which limits the query to published blog posts. Second, we dynamically set a `limit` and `category` if one is supplied.
 
-``` php
+```php
 $filter_args = array(
     'post_status' => 'publish',
     'post_type' => 'post'
@@ -382,7 +384,7 @@ if ($_POST['category']) {
 
 Finally, we loop our query and return our posts with the posts template.
 
-``` php
+```php
 $filter_query = new WP_Query($filter_args);
 
 if ($filter_query->have_posts()) :
@@ -399,12 +401,13 @@ die();
 
 ### Helper function for loading templates
 
-WordPress has a `get_template_part()` function for returning a template in a loop, but this function doesn't allow us to save the response to our `$response['posts]` variable. 
+WordPress has a `get_template_part()` function for returning a template in a loop, but this function doesn't allow us to save the response to our `$response['posts]` variable.
 
 The solution is to create a wrapper that allows to do just that:
 
 You can create the `load_template_part()` function and place it in your `functions.php` or in another place that makes sense.
-``` php
+
+```php
 function load_template_part($template_name, $part_name = null, $args = [])
 {
     ob_start();
@@ -421,10 +424,10 @@ When you click a category button, we need to call our `filterPosts(id)` method a
 
 Let's go back to the `<aside>` that holds our category buttons. We'll be updating the `<li>` and `<button>` in our loop.
 
-``` php
+```php
 <li :class="category == <?php echo $category->term_id; ?> ? 'bg-slate-100' : ''"
     class="hover:bg-slate-100 my-1 px-4 py-2 -ml-4 rounded-md">
-    <button 
+    <button
         @click="filterPosts(<?= $category->term_id; ?>)"
         class="text-xl text-slate-800 w-full text-left">
             <?= esc_html( $category->name ); ?></button>
@@ -434,19 +437,19 @@ Let's go back to the `<aside>` that holds our category buttons. We'll be updatin
 We've made two changes:
 
 1. Style the `<li>` if the category is active:
-    ``` php
-    :class="category == <?php echo $category->term_id; ?> ? 'bg-slate-100' : ''"
-    ```
+   ```php
+   :class="category == <?php echo $category->term_id; ?> ? 'bg-slate-100' : ''"
+   ```
 2. Call `filterPosts()` when the button is clicked
-    ``` php
-    @click="filterPosts(<?= $category->term_id; ?>)"
-    ```
+   ```php
+   @click="filterPosts(<?= $category->term_id; ?>)"
+   ```
 
 ### Display the fitlered posts
 
 Now let's display the filtered posts that we received:
 
-``` php
+```php
 <!-- Posts Column -->
 <div class="w-3/4">
     <!-- Default posts query -->
@@ -467,7 +470,6 @@ Changes we've made:
 Alpine's `x-show` allows us to conditionally show an element based on a value. In our case, when the page initially loads, `showDefault` equals `true` and becomes `false` when the user clicks a category button. If the condition in `x-show` evaluates to false, the element is hidden with `display: none;`.
 
 We're using the `important` modifier on `x-show`, because both divs have the class `grid` which is a display property and it conflicts with `display: none;` if the element should be hidden. Adding `important` makes `x-show` take precedence.
-
 
 ## Final result
 

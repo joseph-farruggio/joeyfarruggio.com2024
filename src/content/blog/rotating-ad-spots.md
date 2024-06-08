@@ -12,14 +12,15 @@ I created the theme for the BiggerPockets blog where they sell sponsor slots. Th
 Advertising networks like AdSense, Mediavine, et al load ads dynamically via JavaScript. With lot's of JavaScript - and it kills page speed performance. Selling sponsored HTML ad spots is a great way to serve highly relevant ads that don't kill performance.
 
 CSS-Tricks does this nicely:
-![CSS Tricks](../../images/blog/css-tricks.png "CSS Tricks")
+![CSS Tricks](../../../public/blog/css-tricks.png "CSS Tricks")
 
 ## Managing ads within WordPress & Advanced Custom Fields
-![Sponsor field group](../../images/blog/acf-sponsors.png "Sponsor field group")
+
+![Sponsor field group](../../../public/blog/acf-sponsors.png "Sponsor field group")
 
 If you're working with WordPress, storing your sponsors and ads in a repeater field will work well. You can display this field group on an ACF options page if you'd like.
 
-``` php
+```php
 acf_add_options_page(array(
     'page_title' 	=> 'Sponsors',
     'menu_title'	=> 'Sponsor Settings',
@@ -30,12 +31,12 @@ acf_add_options_page(array(
 ```
 
 ## Build your `$sponsors` array:
+
 Once you've got a place to create and store your sponsors, you can map it to a template.
 
 Here's a simplified version of what that might look like. In my real world use case, I had to escape some fields that contained strings with single quotes. Otherwise is was resulting in malformed JSON later. So make sure you test this if you run into issues.
 
-
-``` php
+```php
 // Prepare our array
 $sponsors = [];
 
@@ -44,7 +45,7 @@ if (have_rows('sponsors', 'option')) {
 
     while ( have_rows('sponsors', 'option') ) {
         the_row();
-        
+
         // Prepare the current sponsor in the loop
         $sponsor = array(
             'name'              => get_sub_field('name') )),
@@ -54,25 +55,26 @@ if (have_rows('sponsors', 'option')) {
         );
 
         // Push the current sponsor to the $sponsors array
-        $sponsors[] = $sponsor;      
-    
+        $sponsors[] = $sponsor;
+
   } // endwhile
 } // endif
 ```
 
 ## The front-end template
+
 Pass the sponsors array into an Alpine.data component, loop through that array, and map it to a `<template>`:
 
-``` php
+```php
 <div x-data='sponsors(<?= json_encode($sponsors); ?>)'>
   <template x-for="sponsor in sponsors">
     <div>
         <img :src="sponsor.image">
         <p x-text="sponsor.name"></p>
         <p x-text="sponsor.description"></p>
-      
-        <a 
-        :href="ad.ad_link" 
+
+        <a
+        :href="ad.ad_link"
         x-text="ad.linkTitle"
         target="_blank">Learn more</a>
 
@@ -82,41 +84,44 @@ Pass the sponsors array into an Alpine.data component, loop through that array, 
 ```
 
 ## Randomize the sponsors
+
 Build our sponsors component logic:
 
-If you're dealing with multiple sponsors, you might want to limit the number of ads that are displayed 
+If you're dealing with multiple sponsors, you might want to limit the number of ads that are displayed
 
-``` js
-Alpine.data('sponsors', (sponsorsJSON) => ({
-    sponsors: [],
+```js
+Alpine.data("sponsors", (sponsorsJSON) => ({
+	sponsors: [],
 
-    // Randomize an array
-    shuffle(array) {
-        return array.sort(() => Math.random() - 0.5);
-    },
+	// Randomize an array
+	shuffle(array) {
+		return array.sort(() => Math.random() - 0.5);
+	},
 
-    init() {
-        // Shuffle the array and return just the first two
-        this.sponsors = this.shuffle(sponsorsJSON).slice(0, 2);
-    }
+	init() {
+		// Shuffle the array and return just the first two
+		this.sponsors = this.shuffle(sponsorsJSON).slice(0, 2);
+	},
 }));
 ```
 
 ## Analytics
+
 Track clicks and impressions with Alpine `@click` and `x-intersect`:
 
 1. Add `x-intersect` to the parent div that calls the `sponsorViewed()` function
 1. Add `@click` to the the CTA/link that calls the `sponsorClicked()` function
-``` php
+
+```php
 <template x-for="sponsor in sponsors">
     <div x-intersect="sponsorViewed(sponsor.name)">
         <img :src="sponsor.image">
         <p x-text="sponsor.name"></p>
         <p x-text="sponsor.description"></p>
-        
-        <a 
+
+        <a
         @click="sponsorClicked(sponsor.name)"
-        :href="ad.ad_link" 
+        :href="ad.ad_link"
         x-text="ad.linkTitle"
         target="_blank">Learn more</a>
 
@@ -126,7 +131,7 @@ Track clicks and impressions with Alpine `@click` and `x-intersect`:
 
 Emit an event to Google Analytics or something similar when the sponsor/ad is clicked or viewed:
 
-``` js
+```js
 sponsorClicked(sponsor, ) {
     gtag('event', 'click', {
         'event_category': 'Sidebar Ad',
@@ -141,4 +146,3 @@ sponsorViewed(sponsor) {
     });
 },
 ```
-
