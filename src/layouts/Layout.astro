@@ -7,6 +7,12 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const nav = [
+	{ href: "/blog", text: "Blog" },
+	{ href: "/wordpress/development", text: "Development" },
+	{ href: "/wordpress/consulting", text: "Consulting" },
+];
 ---
 
 <!doctype html>
@@ -97,9 +103,7 @@ const { title } = Astro.props;
 				<nav class="hidden md:flex md:items-center md:gap-8">
 					<a href="/">Joey Farruggio</a>
 					<div class="h-8 w-px bg-white/10"></div>
-					<a href="/blog">Blog</a>
-					<a href="/wordpress/development">Development</a>
-					<a href="/wordpress/consulting">Consulting</a>
+					{nav.map((item) => <a href={item.href}>{item.text}</a>)}
 				</nav>
 
 				<nav
@@ -107,9 +111,7 @@ const { title } = Astro.props;
 					x-show="menuOpen"
 					class="absolute top-0 left-0 w-full h-screen bg-[#0A0A23] pt-32 pb-8 px-4 text-xl z-10"
 					:class="menuOpen && 'flex flex-col gap-4'">
-					<a href="/blog">Blog</a>
-					<a href="/wordpress/development">Development</a>
-					<a href="/wordpress/consulting">Consulting</a>
+					{nav.map((item) => <a href={item.href}>{item.text}</a>)}
 				</nav>
 			</div>
 		</header>
@@ -123,9 +125,7 @@ const { title } = Astro.props;
 					class="text-xl text-white flex flex-col gap-4 md:flex-row md:items-center md:gap-8">
 					<a href="/">Joey Farruggio</a>
 					<div class="hidden md:block h-8 w-px bg-white/10"></div>
-					<a href="/blog">Blog</a>
-					<a href="/wordpress/development">Development</a>
-					<a href="/wordpress/consulting">Consulting</a>
+					{nav.map((item) => <a href={item.href}>{item.text}</a>)}
 				</nav>
 			</div>
 
