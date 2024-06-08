@@ -1,0 +1,29 @@
+---
+// TableOfContentsHeading.astro
+const { heading } = Astro.props;
+---
+
+<li class="relative">
+	<a
+		aria-current="page"
+		class="flex justify-between gap-2 py-1 pr-3 transition text-white/80 hover:text-white"
+		href={"#" + heading.slug}><span class="truncate">{heading.text}</span></a
+	>
+	{
+		heading.subheadings.length > 0 && (
+			<>
+				<ul role="list">
+					{heading.subheadings.map((subheading) => (
+						<li>
+							<a
+								class="flex justify-between gap-2 py-1 pr-3 transition pl-7  text-zinc-400 hover:text-white"
+								href={"#" + subheading.slug}>
+								<span class="truncate">{subheading.text}</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</>
+		)
+	}
+</li>

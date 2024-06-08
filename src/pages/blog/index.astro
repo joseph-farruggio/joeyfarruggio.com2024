@@ -1,0 +1,41 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ArticleListItem from "../../components/ArticleListItem.astro";
+
+import { getCollection, getEntry } from "astro:content";
+import ACFForm from "../../components/ACFForm.astro";
+
+let articles = (await getCollection("blog")).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+articles = articles.filter((article) => !article.data.draft);
+---
+
+<Layout title="Blog | Joey Farruggio">
+	<section
+		class="max-w-screen-lg mx-auto px-4 mt-32 lg:grid lg:gap-8 lg:grid-cols-12 xl:gap-12">
+		<div class="lg:col-span-8">
+			<h1 class="font-bold text-white text-4xl">
+				<span class="text-highlight-white block mt-3">Blog</span>
+			</h1>
+
+			<div class="divide-slate-800 divide-y">
+				{
+					articles.map((article) => (
+						<ArticleListItem
+							title={article.data.title}
+							description={article.data.description}
+							url={`/blog/${article.data.category}/${article.slug}`}
+						/>
+					))
+				}
+			</div>
+		</div>
+		<aside class="mt-12 lg:mt-0 lg:col-span-4">
+			<div class="sticky top-10">
+				<ACFForm />
+			</div>
+		</aside>
+	</section>
+</Layout>

@@ -1,0 +1,11 @@
+{
+	process.env.NODE_ENV === "development" && (
+		<div class="fixed bottom-4 right-4 p-2 rounded-xl bg-black text-white">
+			<div class="sm:hidden">XS</div>
+			<div class="hidden sm:block md:hidden">SM</div>
+			<div class="hidden md:block lg:hidden">MD</div>
+			<div class="hidden lg:block xl:hidden">LG</div>
+			<div class="hidden xl:block">XL</div>
+		</div>
+	)
+}

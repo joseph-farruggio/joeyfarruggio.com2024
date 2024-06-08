@@ -1,0 +1,46 @@
+---
+const { hidden = false, title, description, url } = Astro.props;
+---
+
+<article class="py-12 relative {{ 'opacity-50' if data.hidden == true }}">
+	{
+		!hidden ? (
+			<a
+				href={url}
+				class="block mt-1 font-bold text-3xl text-cyan-300 hover:text-white tracking-tight">
+				{title}
+			</a>
+		) : (
+			<>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="hidden lg:block w-6 h-6 mb-2 absolute top-0 left-0 -ml-10 mt-14">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+					/>
+				</svg>
+				<p class="font-bold text-3xl my-0 text-cyan-300 tracking-tight">
+					{title}
+				</p>
+			</>
+		)
+	}
+
+	<p class="text-xl mt-4 mb-1 leading-relaxed text-slate-300">{description}</p>
+
+	{
+		!hidden && (
+			<a
+				href={url}
+				class="inline-block mt-4 text-cyan-300 underline hover:text-white">
+				Read more
+			</a>
+		)
+	}
+</article>
