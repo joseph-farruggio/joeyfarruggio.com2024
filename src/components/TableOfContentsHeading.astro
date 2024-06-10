@@ -3,7 +3,7 @@
 const { heading } = Astro.props;
 ---
 
-<li class="relative">
+<li class="relative" x-ref={heading.slug}>
 	<a
 		aria-current="page"
 		class="flex justify-between gap-2 py-1 pr-3 transition text-white/80 hover:text-white"

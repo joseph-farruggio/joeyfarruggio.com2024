@@ -1,0 +1,167 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import CampFire from "../components/CampFire.astro";
+---
+
+<Layout title="Welcome to Astro.">
+	<section class="relative overflow-hidden">
+		<div class="relative z-20 max-w-screen-2xl mx-auto pt-44 md:pt-60 px-4">
+			<h1
+				class="text-6xl max-w-5xl md:text-8xl text-pretty font-bold bg-gradient-to-r inline-block text-transparent bg-clip-text from-[#2DD4BF] to-[#0EA5E9]">
+				WordPress Theme and Plugin Development
+			</h1>
+			<p class="text-white text-3xl max-w-2xl mt-10">
+				Maybe you need a new WordPress website – or to be rescued from the one
+				you have now.
+			</p>
+
+			<div class="max-w-xl">
+				<Card
+					title="Book a 15-min intro call"
+					body="Tell me about your project, goals, or the business problems keeping you up at night."
+					cta="View calendar"
+					href="https://calendly.com/joey-farruggio/one-on-one-chat-15m"
+				/>
+			</div>
+
+			<p class="text-white mt-6">
+				Or have a look at what the kind of work I do
+				<svg
+					class="h-6 w-6 inline-block ml-2"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M9 15L15 21M15 21L21 15M15 21V9C15 7.4087 14.3679 5.88258 13.2426 4.75736C12.1174 3.63214 10.5913 3 9 3C7.4087 3 5.88258 3.63214 4.75736 4.75736C3.63214 5.88258 3 7.4087 3 9V12"
+						stroke="white"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"></path>
+				</svg>
+			</p>
+		</div>
+
+		<div>
+			<!-- Sky -->
+			<div
+				class="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-[#151441] to-[#0A0A23]">
+			</div>
+
+			<!-- Little Dipper -->
+			<div
+				x-data="scrollFade"
+				x-bind:style="{ opacity: opacity }"
+				class="fixed top-32 right-16 md:right-32 md:absolute">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="368"
+					height="115"
+					fill="none"
+					viewBox="0 0 368 115"
+					><circle cx="352.5" cy="15.5" r="1.5" fill="#fff"></circle><circle
+						cx="366.5"
+						cy="106.5"
+						r="1.5"
+						fill="#fff"></circle><circle
+						cx="262.5"
+						cy="113.5"
+						r="1.5"
+						fill="#fff"></circle><circle
+						cx="227.5"
+						cy="53.5"
+						r="1.5"
+						fill="#fff"></circle><circle
+						cx="148.5"
+						cy="31.5"
+						r="1.5"
+						fill="#fff"></circle><circle cx="83.5" cy="1.5" r="1.5" fill="#fff"
+					></circle><circle cx="1.5" cy="34.5" r="1.5" fill="#fff"
+					></circle></svg
+				>
+			</div>
+
+			<!-- Other Stars -->
+			<div
+				x-bind:style="{ opacity: opacity }"
+				class="fixed top-10 left-10 md:absolute"
+				x-data="stars">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="1465"
+					height="377"
+					fill="none"
+					viewBox="0 0 1465 377"
+					x-ref="starsContainer">
+					<circle
+						cx="1.5"
+						cy="1.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="60.5"
+						cy="133.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="486.5"
+						cy="130.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="279.5"
+						cy="239.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="714.5"
+						cy="282.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="893.5"
+						cy="330.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="791.5"
+						cy="375.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="1227.5"
+						cy="354.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="1106.5"
+						cy="290.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+					<circle
+						cx="1463.5"
+						cy="1.5"
+						r="1.5"
+						fill="#D9D9D9"
+						class="transition-opacity duration-1000"></circle>
+				</svg>
+			</div>
+
+			<!-- Camp site -->
+			<div
+				class="[&>svg]:-translate-x-24 overflow-hidden md:absolute md:bottom-0 md:right-0">
+				<!-- <CampFire /> -->
+			</div>
+		</div>
+	</section>
+</Layout>

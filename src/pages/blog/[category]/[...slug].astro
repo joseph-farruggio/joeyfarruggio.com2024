@@ -45,12 +45,14 @@ const PageURL = Astro.url;
 						></time
 					>
 				</header>
-				<div class="mt-8 max-w-none prose dark:prose-invert">
+				<div class="mt-8 max-w-none prose prose-invert">
 					<p>
 						{post.data.description}
 					</p>
 
-					<Content />
+					<div id="content">
+						<Content />
+					</div>
 				</div>
 				<div class="mt-12 lg:mt-20">
 					<div id="disqus_thread"></div>

@@ -27,5 +27,37 @@ Alpine.data("scrollFade", () => ({
 	},
 }));
 
+Alpine.data("toc", (firstItem) => ({
+	highlight(heading) {
+		// heading is a string
+		console.log(heading);
+		const position = this.getPosition(this.$refs[heading]);
+		// Transform translateY to height
+		this.$refs.highlight.style.transform = `translateY(${position.top}px)`;
+		this.$refs.highlight.style.height = `${position.bottom - position.top}px`;
+	},
+	getPosition(item) {
+		// item is a DOM element
+		const containerRect = this.$el.getBoundingClientRect();
+		const itemRect = item.getBoundingClientRect();
+
+		const top = itemRect.top - containerRect.top;
+		const bottom = itemRect.bottom - containerRect.top;
+
+		return { top, bottom };
+	},
+	init() {
+		this.highlight(firstItem);
+		// loop h2s and h3s in this.$el
+		const headings = document.querySelectorAll("#content h2, #content h3");
+		headings.forEach((heading) => {
+			heading.setAttribute(
+				"x-intersect:enter",
+				`$dispatch('highlight', '${heading.id}')`
+			);
+		});
+	},
+}));
+
 window.Alpine = Alpine;
 Alpine.start();
